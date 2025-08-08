@@ -1,7 +1,5 @@
-
 #include "window.h"
 
-// Window procedure function (must be global or static)
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch (uMsg) {
         case WM_PAINT: {
@@ -18,7 +16,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
         case WM_DESTROY:
             PostQuitMessage(0);
             return 0;
-        // Handle other messages here
+
     }
     return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
@@ -28,18 +26,17 @@ public:
     HWND hwnd;
 
     bool create(HINSTANCE hInstance, int nCmdShow) {
-        // Define window class
+
         WNDCLASS wc = {};
         wc.lpfnWndProc = WindowProc;
         wc.hInstance = hInstance;
         wc.lpszClassName = L"MyWindowClass";
 
-        // Register window class
         if (!RegisterClass(&wc)) {
             return false;
         }
 
-        // Create window
+        //  создаю окно епт
         hwnd = CreateWindowEx(
             0,
             L"MyWindowClass",
